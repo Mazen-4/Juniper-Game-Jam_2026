@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         handleInput();
         handleMovement();
         handleAnim();
-        if (shot)
+        if (shot && (anim.GetBool("canPink")|| anim.GetBool("canGold") || anim.GetBool("canRed")|| anim.GetBool("canBlue")) )
         {
             Instantiate(bulletObj , spawnPos, Quaternion.identity);
         }
@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        if (Input.GetKey(KeyCode.Mouse0) && isGrounded)
+        if (Input.GetKey(KeyCode.Mouse0) )
         {
             shot = true;
             if (dir)
@@ -69,6 +69,8 @@ public class PlayerMovement : MonoBehaviour
         {
             shot = false;
         }
+
+       
     }
 
     private void handleCollision()

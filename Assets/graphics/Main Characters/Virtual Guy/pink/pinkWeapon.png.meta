@@ -1,0 +1,493 @@
+fileFormatVersion: 2
+guid: c54181b648926bd4ea9b7839695bf98f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4368272531772466738
+    second: pinkWeapon_0
+  - first:
+      213: -1311752941415441730
+    second: pinkWeapon_1
+  - first:
+      213: -681823442385162676
+    second: pinkWeapon_2
+  - first:
+      213: -2293243001417746395
+    second: pinkWeapon_3
+  - first:
+      213: 8828964517017211889
+    second: pinkWeapon_4
+  - first:
+      213: -7143422339994175141
+    second: pinkWeapon_5
+  - first:
+      213: -4806823112467777716
+    second: pinkWeapon_6
+  - first:
+      213: 3164209655733806409
+    second: pinkWeapon_7
+  - first:
+      213: 1730341673841771875
+    second: pinkWeapon_8
+  - first:
+      213: 5855766316166319726
+    second: pinkWeapon_9
+  - first:
+      213: 5174349033363568762
+    second: pinkWeapon_10
+  - first:
+      213: -9015467743089542373
+    second: pinkWeapon_11
+  - first:
+      213: 7403402465736010496
+    second: pinkWeapon_12
+  - first:
+      213: -7238063028261936695
+    second: pinkWeapon_13
+  - first:
+      213: 4072145419296752023
+    second: pinkWeapon_14
+  - first:
+      213: -7666434457041982411
+    second: pinkWeapon_15
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pinkWeapon_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 626
+        width: 173
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 236e46a39b83f9c30800000000000000
+      internalID: 4368272531772466738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pinkWeapon_1
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 622
+        width: 180
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebadbd556a7bbcde0800000000000000
+      internalID: -1311752941415441730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pinkWeapon_2
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 629
+        width: 174
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4e291d013da986f0800000000000000
+      internalID: -681823442385162676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pinkWeapon_3
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 628
+        width: 183
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52838dce3a3cc20e0800000000000000
+      internalID: -2293243001417746395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pinkWeapon_4
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 612
+        width: 172
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f3d65b4378c68a70800000000000000
+      internalID: 8828964517017211889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pinkWeapon_5
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 626
+        width: 194
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b59be00ba377ddc90800000000000000
+      internalID: -7143422339994175141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pinkWeapon_6
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 614
+        width: 155
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c47783bc8dbba4db0800000000000000
+      internalID: -4806823112467777716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pinkWeapon_7
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 626
+        width: 166
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 945efdccae789eb20800000000000000
+      internalID: 3164209655733806409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pinkWeapon_8
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 240
+        width: 164
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 365c469a598630810800000000000000
+      internalID: 1730341673841771875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pinkWeapon_9
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 218
+        width: 163
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6e8aca707cd34150800000000000000
+      internalID: 5855766316166319726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pinkWeapon_10
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 221
+        width: 171
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a78758de70bfec740800000000000000
+      internalID: 5174349033363568762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pinkWeapon_11
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 215
+        width: 177
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1bb7298adf92e280800000000000000
+      internalID: -9015467743089542373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pinkWeapon_12
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 192
+        width: 188
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00b2273515b2eb660800000000000000
+      internalID: 7403402465736010496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pinkWeapon_13
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 183
+        width: 167
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c12f82560c3d8b90800000000000000
+      internalID: -7238063028261936695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pinkWeapon_14
+      rect:
+        serializedVersion: 2
+        x: 1174
+        y: 215
+        width: 157
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 791cae60faa238830800000000000000
+      internalID: 4072145419296752023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pinkWeapon_15
+      rect:
+        serializedVersion: 2
+        x: 1357
+        y: 256
+        width: 155
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53ca236da7a5b9590800000000000000
+      internalID: -7666434457041982411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
