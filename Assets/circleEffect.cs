@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class damageBlade : MonoBehaviour
+public class circleEffect : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -17,19 +17,23 @@ public class damageBlade : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("enemy"))
+        if (collision.CompareTag("Player"))
         {
-            osamaScript osama = collision.GetComponent<osamaScript>();
-            Animator anim= collision.GetComponentInChildren<Animator>();
+            PlayerMovement player = collision.GetComponent<PlayerMovement>();
+            
+            Animator anim = collision.GetComponentInChildren<Animator>();
             if (anim)
             {
                 anim.SetTrigger("hit");
-               
+             
+
             }
-            if (osama)
+            if (player)
             {
-                osama.takeDamage();
+                Debug.Log("player hit");
+                player.TakeDamage();
             }
+           
         }
     }
 }

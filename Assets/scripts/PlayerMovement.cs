@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("movement")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
+    [SerializeField] private float health;
+
     [SerializeField] private bool canDouble=true;
     [SerializeField] private bool dir;
     
@@ -189,5 +191,19 @@ public class PlayerMovement : MonoBehaviour
     public void EndAttack()
     {
         shot = false;
+    }
+    public void TakeDamage()
+    {
+        health--;
+
+        if (health <= 0)
+        {
+            anim.SetTrigger("dead");
+
+        }
+    }
+    public void destroyMe()
+    {
+        Destroy(gameObject);
     }
 }

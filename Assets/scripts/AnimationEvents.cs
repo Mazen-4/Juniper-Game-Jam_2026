@@ -15,4 +15,8 @@ public class AnimationEvents : MonoBehaviour
     {
         player.EndAttack();
     }
+    public void destroyMe()
+    {
+        player.destroyMe();
+    }
 }

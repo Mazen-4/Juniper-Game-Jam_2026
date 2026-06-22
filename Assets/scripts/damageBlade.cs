@@ -1,0 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class damageBlade : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("enemy"))
+        {
+            osamaScript osama = collision.GetComponent<osamaScript>();
+            ramadanScript ramadan = collision.GetComponent<ramadanScript>();
+            Animator anim= collision.GetComponentInChildren<Animator>();
+            if (anim)
+            {
+                anim.SetTrigger("hit");
+               
+            }
+            if (osama)
+            {
+                osama.takeDamage();
+            }
+            if (ramadan)
+            {
+                ramadan.TakeDamage();
+            }
+        }
+    }
+}
