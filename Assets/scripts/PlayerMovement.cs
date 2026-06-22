@@ -5,77 +5,143 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+
     [Header("movement")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
+    [SerializeField] private bool canDouble=true;
     [SerializeField] private bool dir;
-
+    
 
     [SerializeField] private Animator anim;
 
     [Header("grounded check")]
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private float distanceToCheck;
-    [SerializeField] bool isGrounded = true;
+    [SerializeField] private bool isGrounded = true;
 
-
-    [Header("shotting related")]
-    [SerializeField] bool shot = false;
+    [Header("shooting related")]
+    [SerializeField] private bool shot = false;
     [SerializeField] private GameObject bulletObj;
     [SerializeField] private float spawnDistance;
-    [SerializeField] private Vector3 spawnPos;
+    [SerializeField] private float fireRate = 0.2f;
+    private float nextFireTime = 0f;
+    private Vector3 spawnPos;
+
+    [Header("dashing")]
+    [SerializeField] private float dashPower;
+    [SerializeField] private float dashTime = 0.5f;
+    private bool canDash = true;
+    private bool isDashing;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
+        if (anim == null) { 
+            anim = GetComponentInChildren<Animator>();
+        }
     }
-
 
     void Update()
     {
-        Debug.Log(rb.velocity.y);
         handleCollision();
         handleInput();
         handleMovement();
         handleAnim();
-        if (shot && (anim.GetBool("canPink")|| anim.GetBool("canGold") || anim.GetBool("canRed")|| anim.GetBool("canBlue")) )
-        {
-            Instantiate(bulletObj , spawnPos, Quaternion.identity);
-        }
+        handleShooting();
+        HandledDoubleJump();
     }
 
+    private bool HasActivePower()
+    {
+        return anim.GetBool("canPink") || anim.GetBool("canGold") || anim.GetBool("canRed") || anim.GetBool("canBlue");
+    }
+
+    void HandledDoubleJump()
+    {
+        if (!isGrounded)
+        {
+            if (canDouble)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    anim.SetTrigger("canDouble");
+                    canDouble=false;
+                }
+            }
+        }
+    }
     private void handleInput()
     {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isDashing)
+        {
+            StartDash();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
+            canDouble = true;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-
+         
         }
 
-        if (Input.GetKey(KeyCode.Mouse0) )
+        bool powerActive = HasActivePower();
+
+        if ((powerActive && Input.GetKey(KeyCode.Mouse0)) ||(!powerActive && Input.GetKeyDown(KeyCode.Mouse0)))
         {
             shot = true;
-            if (dir)
-            {
-                bulletObj.GetComponent<bulletScript>().bulletDir = 1;
-            }
-            else
-            {
-                bulletObj.GetComponent<bulletScript>().bulletDir = -1;
-
-            }
+            bulletObj.GetComponent<bulletScript>().bulletDir = dir ? 1 : -1;
         }
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+
+        if (Input.GetKeyUp(KeyCode.Mouse0) && powerActive)
         {
             shot = false;
         }
+    }
 
-       
+    private void handleShooting()
+    {
+        if (shot && HasActivePower() && Time.time >= nextFireTime)
+        {
+            Instantiate(bulletObj, spawnPos, Quaternion.identity);
+            nextFireTime = Time.time + fireRate;
+        }
+    }
+
+    private void StartDash()
+    {
+        float x = Input.GetAxisRaw("Horizontal");
+        Vector2 dashDir = new Vector2(x, 0);
+
+        if (dashDir == Vector2.zero)
+        {
+            dashDir = new Vector2(x, 0);
+        }
+
+        isDashing = true;
+        canDash = false;
+        anim.SetBool("dash", true);
+
+        rb.velocity = dashDir.normalized * dashPower;
+
+        StartCoroutine(StopDashing());
+    }
+
+    private IEnumerator StopDashing()
+    {
+        yield return new WaitForSeconds(dashTime);
+        isDashing = false;
+        anim.SetBool("dash", false);
     }
 
     private void handleCollision()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, distanceToCheck, whatIsGround);
+        if (isGrounded)
+        {
+            canDash = true;
+        }
     }
 
     private void handleAnim()
@@ -84,12 +150,16 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("jumpFall", rb.velocity.y);
         anim.SetBool("isGrounded", isGrounded);
         anim.SetBool("shot", shot);
-
     }
 
     private void handleMovement()
     {
+        if (isDashing)
+        {
+            return;
+        }
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed, rb.velocity.y);
+
         if (Input.GetAxisRaw("Horizontal") < 0 && dir)
         {
             dir = false;
@@ -108,7 +178,6 @@ public class PlayerMovement : MonoBehaviour
         {
             spawnPos = transform.position + Vector3.left * spawnDistance;
             transform.rotation = Quaternion.Euler(0, 180, 0);
-
         }
     }
 
@@ -117,4 +186,8 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - distanceToCheck));
     }
 
+    public void EndAttack()
+    {
+        shot = false;
+    }
 }
