@@ -1,0 +1,9 @@
+﻿title: Start
+---
+Narrator: Hello there! This our first Yarn Spinner dialogue.
+Narrator: Working pretty well, don't you think?
+-> Yeah!
+    Narrator: Glad to hear it!
+-> I love it!
+    Narrator: Me too!
+===
