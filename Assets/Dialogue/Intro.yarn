@@ -1,9 +1,22 @@
-﻿title: Start
+﻿title: IntroDialogue
 ---
-Narrator: Hello there! This our first Yarn Spinner dialogue.
-Narrator: Working pretty well, don't you think?
--> Yeah!
-    Narrator: Glad to hear it!
--> I love it!
-    Narrator: Me too!!
+Narrator: Welcome back, Subject 077. It seems there are still some irregularities with your memory connectors. So let's start from the beginning, shall we?
+Narrator: Welcome to S.R.I. - Secret Random Industries. Where the future is never predictable.
+Narrator: Especially yours.
+Narrator: We've taken the liberty of preparing a weapons spinning wheel, assembled from your previous attempts. You may use it to fight back. But keep in mind - nothing here is free.
+Narrator: You are currently in the Testing Section. Today's evaluation consists of three chambers. A super fair. Super easy. Quiz.
+Narrator: Upon completing all tests, the R.T.I. facility will provide you with a very valuable present.
+Narrator: That's all, Subject 077. Please proceed to the next chamber when ready.
+Narrator: And good luck.
+Narrator: You'll need it.
+===
+
+title: OutroDialogue
+---
+Narrator: Congratulations, Subject 077. Your performance across the tests was truly impressive.
+Narrator: Oh - and yes. I know you didn't reach the last chamber.
+Narrator: But then again, you were never meant to.
+Narrator: No one ever is.
+Narrator: So... farewell, Subject 077.
+Narrator: Please do try to die peacefully this time.
 ===
