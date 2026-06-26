@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool shot = false;
     [SerializeField] private GameObject bulletObj;
     [SerializeField] private float spawnDistance;
+    [SerializeField] private float spawnDistanceUP;
+
     [SerializeField] private float fireRate = 0.2f;
     private float nextFireTime = 0f;
     private Vector3 spawnPos;
@@ -43,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     private float gravityScale;
     private bool pendingShot = false;
     public int alginFlag = -1;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -162,10 +165,14 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            anim.SetTrigger("shot2");  // trigger instead of bool
+            anim.SetTrigger("shot2");
             if (alginFlag == 1)
             {
                 bulletObj.GetComponent<bulletScript>().bulletDir = dir ? 1 : -1;
+                pendingShot = true;
+            }
+            if (alginFlag == 3)
+            {
                 pendingShot = true;
             }
         }
@@ -177,6 +184,7 @@ public class PlayerMovement : MonoBehaviour
     {
         return currentWeapon;
     }
+    
 
 
     private void StartDash()
@@ -278,14 +286,27 @@ public class PlayerMovement : MonoBehaviour
     }
     public void fireUpBullut()
     {
-        Debug.Log("fireUpBullut called | pendingShot: " + pendingShot + " | alginFlag: " + alginFlag);
-
-        if (pendingShot && alginFlag == 1 && Time.time >= nextFireTime)
+        if (pendingShot && Time.time >= nextFireTime)
         {
-            Debug.Log("BULLET SPAWNED");
-            Instantiate(bulletObj, spawnPos, Quaternion.identity);
+            if (alginFlag == 1)
+            {
+                GameObject b = Instantiate(bulletObj, spawnPos, Quaternion.identity);
+                bulletScript bs = b.GetComponent<bulletScript>();
+                bs.bulletDir = dir ? 1 : -1;
+                bs.bulletDirY = 0;
+            }
+            if (alginFlag == 3)
+            {
+                Vector3 upSpawnPos = transform.position + Vector3.up * spawnDistanceUP;
+                GameObject b = Instantiate(bulletObj, upSpawnPos, Quaternion.identity);
+                bulletScript bs = b.GetComponent<bulletScript>();
+                bs.bulletDir = 0;
+                bs.bulletDirY = 1;
+            }
+
             nextFireTime = Time.time + fireRate;
-            pendingShot = false;  // consumed
+            pendingShot = false;
         }
     }
+
 }
