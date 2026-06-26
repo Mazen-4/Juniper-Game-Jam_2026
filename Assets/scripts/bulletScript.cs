@@ -43,8 +43,8 @@ public class bulletScript : MonoBehaviour
 
 
             }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 
 }
