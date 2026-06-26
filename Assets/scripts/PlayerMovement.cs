@@ -8,12 +8,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("movement")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
-<<<<<<< Updated upstream
-=======
     [SerializeField] private float health;
 
     [SerializeField] private bool canDouble = true;
->>>>>>> Stashed changes
     [SerializeField] private bool dir;
 
 
@@ -29,19 +26,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool shot = false;
     [SerializeField] private GameObject bulletObj;
     [SerializeField] private float spawnDistance;
-<<<<<<< Updated upstream
-    [SerializeField] private Vector3 spawnPos;
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
-    }
-
-
-    void Update()
-    {
-        Debug.Log(rb.velocity.y);
-=======
     [SerializeField] private float fireRate = 0.2f;
     private float nextFireTime = 0f;
     private Vector3 spawnPos;
@@ -118,16 +102,10 @@ public class PlayerMovement : MonoBehaviour
         {
             alginFlag = 4;
         }
->>>>>>> Stashed changes
         handleCollision();
         handleInput();
         handleMovement();
         handleAnim();
-<<<<<<< Updated upstream
-        if (shot)
-        {
-            Instantiate(bulletObj , spawnPos, Quaternion.identity);
-=======
         HandledDoubleJump();
     }
 
@@ -146,14 +124,11 @@ public class PlayerMovement : MonoBehaviour
                     canDouble = false;
                 }
             }
->>>>>>> Stashed changes
         }
     }
 
     private void handleInput()
     {
-<<<<<<< Updated upstream
-=======
         if (Input.GetKeyDown(KeyCode.Tab))
         {
 
@@ -173,34 +148,11 @@ public class PlayerMovement : MonoBehaviour
             StartDash();
         }
 
->>>>>>> Stashed changes
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 
         }
-<<<<<<< Updated upstream
-
-        if (Input.GetKey(KeyCode.Mouse0) && isGrounded)
-        {
-            shot = true;
-            if (dir)
-            {
-                bulletObj.GetComponent<bulletScript>().bulletDir = 1;
-            }
-            else
-            {
-                bulletObj.GetComponent<bulletScript>().bulletDir = -1;
-
-            }
-        }
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            shot = false;
-        }
-    }
-
-=======
         if (Input.GetKey(KeyCode.Mouse0))
         {
             anim.SetTrigger("shot2");  // trigger instead of bool
@@ -245,7 +197,6 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("dash", false);
     }
 
->>>>>>> Stashed changes
     private void handleCollision()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, distanceToCheck, whatIsGround);
@@ -256,10 +207,6 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("moveIdle", rb.velocity.x);
         anim.SetFloat("jumpFall", rb.velocity.y);
         anim.SetBool("isGrounded", isGrounded);
-<<<<<<< Updated upstream
-        anim.SetBool("shot", shot);
-=======
->>>>>>> Stashed changes
 
     }
 
@@ -293,9 +240,6 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - distanceToCheck));
     }
 
-<<<<<<< Updated upstream
-}
-=======
     public void EndAttack()
     {
         shot = false;
@@ -331,4 +275,3 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
->>>>>>> Stashed changes
