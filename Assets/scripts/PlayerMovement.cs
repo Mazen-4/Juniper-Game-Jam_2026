@@ -198,6 +198,10 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("isGrounded", isGrounded);
     }
 
+    public void Heal(float amount)
+    {
+        health = Mathf.Min(health + amount, maxHealth);
+    }
     private void handleMovement()
     {
         if (isDashing) return;
