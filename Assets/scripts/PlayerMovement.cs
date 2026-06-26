@@ -84,8 +84,10 @@ public class PlayerMovement : MonoBehaviour
     {
         return alginFlag;
     }
+
     void Update()
     {
+        
         if (wheel.activeWeapon == 3)
         {
             alginFlag = 3;
