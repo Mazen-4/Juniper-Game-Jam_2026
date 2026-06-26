@@ -7,6 +7,8 @@ public class bulletScript : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField]private int bulletSpeed;
     [SerializeField] public int bulletDir;
+    public int bulletDirY = 0; 
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -16,9 +18,11 @@ public class bulletScript : MonoBehaviour
     void Update()
     {
         transform.position += Vector3.right * bulletDir * Time.deltaTime * bulletSpeed;
+        transform.position += Vector3.up * bulletDirY * Time.deltaTime * bulletSpeed;
+
     }
 
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("enemy"))
