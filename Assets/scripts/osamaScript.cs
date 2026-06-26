@@ -13,7 +13,7 @@ public class osamaScript : MonoBehaviour
     [SerializeField] private float speed;
 
 
-    
+
     [Header("mercyFactor")]
     [SerializeField] private float minReactionTime;
     [SerializeField] private float maxReactionTime;
@@ -66,7 +66,7 @@ public class osamaScript : MonoBehaviour
 
             Vector3 pos = transform.position;
 
-            pos.y = Mathf.MoveTowards(pos.y,ogHeight, returnSpeed * Time.deltaTime);
+            pos.y = Mathf.MoveTowards(pos.y, ogHeight, returnSpeed * Time.deltaTime);
 
             transform.position = pos;
 
@@ -100,7 +100,7 @@ public class osamaScript : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
+
         float distanceX = player.position.x - transform.position.x;
         bool isPlayerOutside = distanceX > upperBound || distanceX < lowerBound;
         bool isInDangerZone = math.abs(distanceX) < dangerZone;
@@ -160,10 +160,10 @@ public class osamaScript : MonoBehaviour
 
     public void takeDamage()
     {
-        health --;
+        health--;
 
-        
-        if(health <= 0) 
+
+        if (health <= 0)
         {
             anim.SetTrigger("dead");
         }
