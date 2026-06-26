@@ -123,8 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &22844600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,7 +1270,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.25167286, y: -0.006950319}
   m_Size: {x: 0.67235017, y: 1.5398537}
   m_Direction: 0
->>>>>>> Stashed changes
 --- !u!1 &1115746630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,13 +1381,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-<<<<<<< Updated upstream
-  m_Children: []
-=======
   m_Children:
   - {fileID: 1483048718}
   - {fileID: 955629392}
->>>>>>> Stashed changes
   m_Father: {fileID: 1367803192}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1466,8 +1459,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-<<<<<<< Updated upstream
-=======
 --- !u!114 &1169171225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1481,7 +1472,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon3YOffset: 0.5
->>>>>>> Stashed changes
 --- !u!1 &1367803190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,13 +1556,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-<<<<<<< Updated upstream
-  jumpForce: 14
-=======
   jumpForce: 20
   health: 10
   canDouble: 1
->>>>>>> Stashed changes
   dir: 0
   anim: {fileID: 0}
   whatIsGround:
@@ -1583,9 +1569,6 @@ MonoBehaviour:
   shot: 0
   bulletObj: {fileID: 8957412789411668058, guid: 5c9ce2ca2237a1a44bd922bdee280194, type: 3}
   spawnDistance: 0.85
-<<<<<<< Updated upstream
-  spawnPos: {x: 0, y: 0, z: 0}
-=======
   fireRate: 0.2
   dashPower: 25
   dashTime: 0.31
@@ -2200,7 +2183,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
->>>>>>> Stashed changes
 --- !u!1 &1792360408
 GameObject:
   m_ObjectHideFlags: 0
@@ -2310,8 +2292,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
-<<<<<<< Updated upstream
-=======
 --- !u!1001 &2045939760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2503,4 +2483,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c7c4336156a71849b84a2d89fc0c3e3, type: 3}
->>>>>>> Stashed changes
