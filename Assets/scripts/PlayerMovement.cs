@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("dashing")]
     [SerializeField] private float dashPower;
-    [SerializeField] private float dashTime = 0.5f;
+    [SerializeField] private float dashTime = 0.2f;
     private bool canDash = true;
     private bool isDashing;
 
@@ -125,6 +125,13 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            //if (Input.GetKeyDown(KeyCode.Space))
+            {
+                canDouble = true;
+            }
+        }
     }
 
     private void handleInput()
@@ -177,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (dashDir == Vector2.zero)
         {
-            dashDir = new Vector2(x, 0);
+            dashDir = new Vector2(dir ? 1 : -1, 0); // Use facing direction
         }
 
         isDashing = true;
@@ -193,6 +200,7 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(dashTime);
         isDashing = false;
+        canDash = true;
         rb.gravityScale = gravityScale;
         anim.SetBool("dash", false);
     }
@@ -200,6 +208,7 @@ public class PlayerMovement : MonoBehaviour
     private void handleCollision()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, distanceToCheck, whatIsGround);
+        //if (isGrounded) canDash = true;
     }
 
     private void handleAnim()
@@ -212,6 +221,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void handleMovement()
     {
+        if (isDashing) return;
+
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed, rb.velocity.y);
         if (Input.GetAxisRaw("Horizontal") < 0 && dir)
         {
