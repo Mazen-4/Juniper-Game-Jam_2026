@@ -2243,6 +2243,10 @@ PrefabInstance:
       propertyPath: wheel
       value: 
       objectReference: {fileID: 280655830}
+    - target: {fileID: 6962622144225475558, guid: f3fd4b4eaa59beb458031676f85886b1, type: 3}
+      propertyPath: spawnDistanceUP
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6962622144225475563, guid: f3fd4b4eaa59beb458031676f85886b1, type: 3}
       propertyPath: m_Name
       value: Player
