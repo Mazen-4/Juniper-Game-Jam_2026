@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     [Header("movement")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
@@ -63,14 +64,14 @@ public class PlayerMovement : MonoBehaviour
         gravityScale = rb.gravityScale;
     }
 
-    // ── UI BARS: two getter methods ─────────────────────────
+     //── UI BARS: two getter methods ─────────────────────────
     public float GetHealthNormalized() => health / maxHealth;
     public float GetDashCooldownNormalized()
     {
         if (canDash) return 1f;
         return 1f - ((nextDashTime - Time.time) / dashCooldown);
     }
-    // ───────────────────────────────────────────────────────
+     //───────────────────────────────────────────────────────
 
     private void SwitchWeapon(int weaponIndex)
     {
@@ -159,8 +160,6 @@ public class PlayerMovement : MonoBehaviour
         return currentWeapon;
     }
     
-
-
     private void StartDash()
     {
         rb.gravityScale = 0;
@@ -211,7 +210,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void handleMovement()
     {
-        if (isDashing) return;
+        if (isDashing || isKnockedBack) return;
 
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed, rb.velocity.y);
 
@@ -237,15 +236,29 @@ public class PlayerMovement : MonoBehaviour
 
     public void EndAttack() { shot = false; }
 
-    public void TakeDamage()
+    public void TakeDamage(float damage = 1f)
     {
-        health--;
+        Debug.Log($"TakeDamage called! Health before: {health}");
+        health -= damage;
         if (health <= 0)
+        {
             anim.SetBool("dead2", true);
+            StartCoroutine(ShowDeathMenuDelayed());
+        }
     }
 
-    public void disableScript() { this.enabled = false; }
-    public void destroyMe() { Destroy(gameObject); }
+    private IEnumerator ShowDeathMenuDelayed()
+    {
+        Debug.Log("1");
+        yield return new WaitForSeconds(2.5f);  // wait for death animation
+        Debug.Log("2");
+        SceneManager.LoadScene("DeathScreen");
+        Debug.Log("3");
+    }
+
+    public void disableScript() { //this.enabled = false; 
+    }
+    public void destroyMe() { Destroy(gameObject);}
 
     public void fireUpBullut()
     {
@@ -271,6 +284,17 @@ public class PlayerMovement : MonoBehaviour
             pendingShot = false;
         }
     }
+    private bool isKnockedBack = false;
+
+    public void ApplyKnockback(float forceY)
+    {
+        isKnockedBack = true;
+        rb.velocity = new Vector2(rb.velocity.x, forceY);
+        anim.SetTrigger("hit");
+        Invoke(nameof(ResetKnockback), 0.2f);
+    }
+
+    private void ResetKnockback() => isKnockedBack = false;
 }
 
 
