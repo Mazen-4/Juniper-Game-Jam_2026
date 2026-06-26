@@ -14,7 +14,7 @@ public class UI_Bars_logic : MonoBehaviour
     [SerializeField] private Slider staminaSlider;
 
     private PlayerMovement playerMovement;
-
+    
     private void Start()
     {
         playerMovement = target.GetComponent<PlayerMovement>();
