@@ -158,9 +158,9 @@ public class osamaScript : MonoBehaviour
         attack = false;
     }
 
-    public void takeDamage()
+    public void takeDamage(int damage)
     {
-        health--;
+        health-= damage;
 
 
         if (health <= 0)
