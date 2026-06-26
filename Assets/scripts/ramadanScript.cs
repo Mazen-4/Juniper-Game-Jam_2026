@@ -146,10 +146,9 @@ public class ramadanScript : MonoBehaviour
         anim.SetBool("move", true);
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int damage)
     {
-        health--;
-
+        health -= damage;
         if (health <= 0)
         {
             anim.SetTrigger("dead");

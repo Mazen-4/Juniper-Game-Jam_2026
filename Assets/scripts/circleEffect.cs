@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class circleEffect : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +21,13 @@ public class circleEffect : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             PlayerMovement player = collision.GetComponent<PlayerMovement>();
-            
+           
             Animator anim = collision.GetComponentInChildren<Animator>();
+            
             if (anim)
             {
                 anim.SetTrigger("hit");
-             
-
+    
             }
             if (player)
             {

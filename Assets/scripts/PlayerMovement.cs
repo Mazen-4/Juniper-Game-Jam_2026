@@ -148,6 +148,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    public int getCurrentWeapon()
+    {
+        return currentWeapon;
+    }
+
 
     private void StartDash()
     {
