@@ -6,19 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void NewGame()
-    {
-        SceneManager.LoadScene("GameScene");
-    }
-
     //public void ContinueGame()
     //{
     //    // same as NewGame for now
     //    SceneManager.LoadScene("GameScene");
     //}
+    public void NewGame()
+    {
+        SceneManager.LoadScene("Chamber1");
+    }
+
 
     public void ExitGame()
     {
-        Application.Quit();
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                Application.Quit();
+        #endif
     }
 }
