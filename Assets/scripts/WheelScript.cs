@@ -11,13 +11,13 @@ public class WheelScript : MonoBehaviour
 
     public float stopPowerS;
     public float stopPowerE;
-
+    [SerializeField] private PlayerMovement player;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private bool isSpinning;
     float accum = 0f;
     float angularSpeed = 0f;
     [SerializeField] private Animator playerAnimator;
-
+    public int activeWeapon;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -38,6 +38,8 @@ public class WheelScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             rotate();
+            
+
         }
         if (angularSpeed > 0)
         {
@@ -60,44 +62,42 @@ public class WheelScript : MonoBehaviour
             }
         }
     }
-
+    
     void GetReward()
     {
         float rot = transform.eulerAngles.z;
-        if (rot > 0 + 45 && rot <= 90 + 45)
+        if (rot > 45 && rot <= 135)
         {
             transform.eulerAngles = new Vector3(0, 0, 90);
-            playerAnimator.SetBool("canBlue",false);
-            playerAnimator.SetBool("canPink", false);
-            playerAnimator.SetBool("canGold", false);
-            playerAnimator.SetBool("canRed", true);
-
+            player.switchLayer(1); // gun1
+            activeWeapon = 1;
+            Debug.Log("weapon1");
         }
-        else if (rot > 90 + 45 && rot <= 180 + 45)
+        else if (rot > 135 && rot <= 225)
         {
             transform.eulerAngles = new Vector3(0, 0, 180);
-            playerAnimator.SetBool("canBlue", false);
-            playerAnimator.SetBool("canPink", false);
-            playerAnimator.SetBool("canGold", true);
-            playerAnimator.SetBool("canRed", false);
+            player.switchLayer(2); // gun2
+            activeWeapon = 2;
+            Debug.Log("weapon2");
+
+
         }
-        else if (rot > 180 + 45 && rot <= 270 + 45)
+        else if (rot > 225 && rot <= 315)
         {
             transform.eulerAngles = new Vector3(0, 0, 270);
-            playerAnimator.SetBool("canBlue", true);
-            playerAnimator.SetBool("canPink", false);
-            playerAnimator.SetBool("canGold", false);
-            playerAnimator.SetBool("canRed", false);
+            player.switchLayer(3); // gun3
+            activeWeapon = 3;
+            Debug.Log("weapon3");
+
         }
         else
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
-            playerAnimator.SetBool("canBlue", false);
-            playerAnimator.SetBool("canPink", true);
-            playerAnimator.SetBool("canGold", false);
-            playerAnimator.SetBool("canRed", false);
+            player.switchLayer(4); 
+            activeWeapon = 4;
+            Debug.Log("weapon4");
+
         }
     }
 
- 
 }

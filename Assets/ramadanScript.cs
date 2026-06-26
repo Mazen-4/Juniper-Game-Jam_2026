@@ -37,6 +37,8 @@ public class ramadanScript : MonoBehaviour
     [SerializeField] private float health = 3;
 
     [SerializeField] private bool canAttack = true;
+    
+    
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
