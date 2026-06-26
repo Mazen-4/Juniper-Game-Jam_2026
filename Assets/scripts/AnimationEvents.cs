@@ -43,7 +43,11 @@ public class AnimationEvents : MonoBehaviour
     {
         player.fireUpBullut();
     }
-    
+
+    public void fireUpBullutUP()
+    {
+        player.fireUpBullut();
+    }
 
     public void disableScript()
     {
