@@ -17,9 +17,35 @@ public class damageBlade : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        PlayerMovement player = GetComponentInParent<PlayerMovement>();
+        int currWeapon = player.getCurrentWeapon();
+
+      
         if (collision.CompareTag("enemy"))
         {
-            osamaScript osama = collision.GetComponent<osamaScript>();
+            int dam = 1;
+            if (currWeapon == 1)
+            {
+                dam = 1;
+            }
+            if (currWeapon == 2)
+            {
+                dam = 3;
+            }
+            if (currWeapon == 3)
+            {
+                dam = 2;
+            }
+            if (currWeapon == 4)
+            {
+                dam = 5;
+            }
+            else
+            {
+                dam = 1;
+            }
+                osamaScript osama = collision.GetComponent<osamaScript>();
             ramadanScript ramadan = collision.GetComponent<ramadanScript>();
             Animator anim= collision.GetComponentInChildren<Animator>();
             if (anim)
@@ -29,11 +55,11 @@ public class damageBlade : MonoBehaviour
             }
             if (osama)
             {
-                osama.takeDamage();
+                osama.takeDamage(dam);
             }
             if (ramadan)
             {
-                ramadan.TakeDamage();
+                ramadan.TakeDamage(dam);
             }
         }
     }
