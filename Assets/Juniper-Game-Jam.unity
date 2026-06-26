@@ -1555,7 +1555,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 4.5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ac73bdce6c140414c9b517909d481620, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -2427,12 +2427,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2236684972788238900, guid: db733be88f10dbc4e81dae3613fd9476, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2236684972788238903, guid: db733be88f10dbc4e81dae3613fd9476, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2236684972788238903, guid: db733be88f10dbc4e81dae3613fd9476, type: 3}
+      propertyPath: health
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2236684972788238903, guid: db733be88f10dbc4e81dae3613fd9476, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1367803192}
+    - target: {fileID: 2236684972788238903, guid: db733be88f10dbc4e81dae3613fd9476, type: 3}
+      propertyPath: ogHeight
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2236684972788238903, guid: db733be88f10dbc4e81dae3613fd9476, type: 3}
+      propertyPath: maxPatrol
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2236684972788238903, guid: db733be88f10dbc4e81dae3613fd9476, type: 3}
+      propertyPath: minPatrol
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2236684972788238903, guid: db733be88f10dbc4e81dae3613fd9476, type: 3}
+      propertyPath: dangerZone
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2236684972788238903, guid: db733be88f10dbc4e81dae3613fd9476, type: 3}
+      propertyPath: lowerBound
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2236684972788238903, guid: db733be88f10dbc4e81dae3613fd9476, type: 3}
+      propertyPath: upperBound
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2236684972788238903, guid: db733be88f10dbc4e81dae3613fd9476, type: 3}
+      propertyPath: chargePower
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2236684972788238903, guid: db733be88f10dbc4e81dae3613fd9476, type: 3}
+      propertyPath: patrolSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2236684972788238903, guid: db733be88f10dbc4e81dae3613fd9476, type: 3}
+      propertyPath: returnSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2236684972788238903, guid: db733be88f10dbc4e81dae3613fd9476, type: 3}
+      propertyPath: maxReactionTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2236684972788238903, guid: db733be88f10dbc4e81dae3613fd9476, type: 3}
+      propertyPath: minReactionTime
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db733be88f10dbc4e81dae3613fd9476, type: 3}
 --- !u!1001 &8502353254070474148
