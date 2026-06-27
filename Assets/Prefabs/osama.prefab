@@ -319,6 +319,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   rb: {fileID: 0}
   speed: 2
+  blood: {fileID: 5250061289857277161, guid: 6b2bdb07df1f34b4ca944e0070efd79a, type: 3}
   minReactionTime: 0.5
   maxReactionTime: 1
   reactionTimer: 0
@@ -334,3 +335,6 @@ MonoBehaviour:
   movingRight: 1
   patrolSpeed: 1
   health: 10
+  lootTable:
+  - itemPrefab: {fileID: 8107161599600560192, guid: b0b596f3aa9e33740a40d2b0fd59a6ed, type: 3}
+    dropChance: 60.2

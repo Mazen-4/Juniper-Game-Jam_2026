@@ -83,12 +83,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5056d435f6bf104e9828a0d297483c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 8383285684683178776, guid: f3fd4b4eaa59beb458031676f85886b1, type: 3}
   anim: {fileID: 0}
   rb: {fileID: 0}
   minPatrol: 10
   maxPatrol: 20
   patrolSpeed: 2
+  blood: {fileID: 5250061289857277161, guid: 6b2bdb07df1f34b4ca944e0070efd79a, type: 3}
   dangerZone: 10
   speed: 4
   lowerBound: -0.9
@@ -98,6 +99,7 @@ MonoBehaviour:
   attack: 0
   health: 10
   canAttack: 1
+  lootTable: []
 --- !u!1 &8502353254628985616
 GameObject:
   m_ObjectHideFlags: 0

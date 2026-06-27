@@ -4,54 +4,39 @@ using Yarn.Unity;
 public class StartDialogue : MonoBehaviour
 {
     public DialogueRunner runner;
+    private PlayerMovement player;
+    private Rigidbody2D playerRb;
 
     void Start()
     {
-        runner.onDialogueStart.AddListener(OnDialogueStart);
+        player = FindObjectOfType<PlayerMovement>();
+        playerRb = player.GetComponent<Rigidbody2D>();
         runner.onDialogueComplete.AddListener(OnDialogueEnd);
+        StartCoroutine(StartAfterLanding());
+    }
+
+    private System.Collections.IEnumerator StartAfterLanding()
+    {
+        // wait until player is on the ground
+        yield return new WaitUntil(() => playerRb.velocity.y == 0f);
+
+        // one extra frame to let idle animation kick in
+        yield return null;
+        yield return null;
+
+        player.enabled = false;
+        playerRb.velocity = Vector2.zero;
+        playerRb.bodyType = RigidbodyType2D.Static;
+
         runner.StartDialogue("IntroDialogue");
     }
 
-    private void OnDialogueStart()
-    {
-        PlayerMovement player = FindObjectOfType<PlayerMovement>();
-        if (player != null) player.enabled = false;
-    }
-
     private void OnDialogueEnd()
     {
-        PlayerMovement player = FindObjectOfType<PlayerMovement>();
-        if (player != null) player.enabled = true;
-    }
-}
-
-public class OutroTrigger : MonoBehaviour
-{
-    public DialogueRunner dialogueRunner;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player") && !dialogueRunner.IsDialogueRunning)
+        if (player != null)
         {
-            dialogueRunner.onDialogueStart.AddListener(OnDialogueStart);
-            dialogueRunner.onDialogueComplete.AddListener(OnDialogueEnd);
-            dialogueRunner.StartDialogue("OutroDialogue");
+            playerRb.bodyType = RigidbodyType2D.Dynamic;
+            player.enabled = true;
         }
-    }
-
-    private void OnDialogueStart()
-    {
-        PlayerMovement player = FindObjectOfType<PlayerMovement>();
-        if (player != null) player.enabled = false;
-    }
-
-    private void OnDialogueEnd()
-    {
-        PlayerMovement player = FindObjectOfType<PlayerMovement>();
-        if (player != null) player.enabled = true;
-
-        // Unsubscribe so it doesn't stack if player re-enters the trigger
-        dialogueRunner.onDialogueStart.RemoveListener(OnDialogueStart);
-        dialogueRunner.onDialogueComplete.RemoveListener(OnDialogueEnd);
     }
 }
