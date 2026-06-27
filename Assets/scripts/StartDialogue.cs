@@ -1,53 +1,42 @@
 using UnityEngine;
 using Yarn.Unity;
+
 public class StartDialogue : MonoBehaviour
 {
     public DialogueRunner runner;
+    private PlayerMovement player;
+    private Rigidbody2D playerRb;
 
     void Start()
     {
+        player = FindObjectOfType<PlayerMovement>();
+        playerRb = player.GetComponent<Rigidbody2D>();
         runner.onDialogueComplete.AddListener(OnDialogueEnd);
+        StartCoroutine(StartAfterLanding());
+    }
 
-        // Disable player directly before starting — don't rely on onDialogueStart
-        PlayerMovement player = FindObjectOfType<PlayerMovement>();
-        if (player != null) player.enabled = false;
+    private System.Collections.IEnumerator StartAfterLanding()
+    {
+        // wait until player is on the ground
+        yield return new WaitUntil(() => playerRb.velocity.y == 0f);
+
+        // one extra frame to let idle animation kick in
+        yield return null;
+        yield return null;
+
+        player.enabled = false;
+        playerRb.velocity = Vector2.zero;
+        playerRb.bodyType = RigidbodyType2D.Static;
 
         runner.StartDialogue("IntroDialogue");
     }
 
     private void OnDialogueEnd()
     {
-        PlayerMovement player = FindObjectOfType<PlayerMovement>();
-        if (player != null) player.enabled = true;
-    }
-}
-
-public class OutroTrigger : MonoBehaviour
-{
-    public DialogueRunner dialogueRunner;
-    private bool triggered = false;
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (triggered) return;
-
-        if (other.CompareTag("Player") && !dialogueRunner.IsDialogueRunning)
+        if (player != null)
         {
-            triggered = true;
-
-            // Disable player directly here too, same reason
-            PlayerMovement player = FindObjectOfType<PlayerMovement>();
-            if (player != null) player.enabled = false;
-
-            dialogueRunner.onDialogueComplete.AddListener(OnDialogueEnd);
-            dialogueRunner.StartDialogue("OutroDialogue");
+            playerRb.bodyType = RigidbodyType2D.Dynamic;
+            player.enabled = true;
         }
-    }
-
-    private void OnDialogueEnd()
-    {
-        PlayerMovement player = FindObjectOfType<PlayerMovement>();
-        if (player != null) player.enabled = true;
-        dialogueRunner.onDialogueComplete.RemoveListener(OnDialogueEnd);
     }
 }
