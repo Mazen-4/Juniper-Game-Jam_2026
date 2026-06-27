@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using Random = UnityEngine.Random;
 public class osamaScript : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class osamaScript : MonoBehaviour
     [SerializeField] private float speed;
     private bool isDead = false;
 
+    public GameObject blood;
 
     [Header("mercyFactor")]
     [SerializeField] private float minReactionTime;
@@ -191,6 +193,8 @@ public class osamaScript : MonoBehaviour
 
     public void destroyMe()
     {
+        Instantiate(blood, transform.position, quaternion.identity);
+
         Destroy(gameObject);
     }
 }

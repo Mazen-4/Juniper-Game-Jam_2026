@@ -18,7 +18,7 @@ public class ramadanScript : MonoBehaviour
     private float leftPoint;
     private float rightPoint;
     private bool isPetrol;
-
+    public GameObject blood;
     [Header("Danger Zone")]
     [SerializeField] private float dangerZone = 5f;
     [SerializeField] private float speed = 4f;
@@ -179,6 +179,7 @@ public class ramadanScript : MonoBehaviour
     }
     public void destroyMe()
     {
+        Instantiate(blood , transform.position , quaternion.identity);
         Destroy(gameObject);
     }
     public void EndAttack()
