@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/DeathScreen.unity
     guid: 8b4ecd3d59cf4154fbfe7271eccbf972
+  - enabled: 1
+    path: Assets/willyWithBigBilly.unity
+    guid: 59c765b06b3c3574bab36894dcf76ba5
   m_configObjects: {}
