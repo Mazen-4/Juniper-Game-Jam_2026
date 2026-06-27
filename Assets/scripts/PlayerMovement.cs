@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -331,9 +332,9 @@ public class PlayerMovement : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.3f);
 
-        this.enabled = false;
-        Time.timeScale = 0f;
-        Time.fixedDeltaTime = 0f;
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+        SceneManager.LoadScene("DeathScreen");
     }
     public void destroyMe() { Destroy(gameObject); }
 
