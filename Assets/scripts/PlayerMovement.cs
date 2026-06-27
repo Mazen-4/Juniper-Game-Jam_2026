@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     // ───────────────────────────────────────────────────────
 
 
+    public int coinCount;
     int val = 0;
     public WheelScript wheel;
     [Header("Weapon")]

@@ -6,19 +6,28 @@ using UnityEngine.UI;
 public class CoinManager : MonoBehaviour
 {
     public static CoinManager instance;
-    public Text coinText;
-
-    private int coinCount;
+   
+    public static int coinCount;
 
     private void Awake()
     {
         instance = this;
         coinCount = 0;
+        DontDestroyOnLoad(gameObject);
+    }
+    public static void setCoinCt(int num)
+    {
+        coinCount = num;
+    }
+
+    public static int getCoinCt()
+    {
+        return coinCount;
     }
 
     public void AddCoin()
     {
         coinCount = coinCount + 1;
-        coinText.text = "Coins: " + coinCount.ToString();
+      
     }
 }

@@ -38,8 +38,11 @@ public class WheelScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            rotate();
-            
+            if (CoinManager.getCoinCt() > 5)
+            {
+                rotate();
+                CoinManager.setCoinCt(CoinManager.getCoinCt() - 5);  
+            }
 
         }
         if (angularSpeed > 0)

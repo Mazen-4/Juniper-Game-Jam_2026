@@ -15,7 +15,8 @@ public enum soundType
     PLAYERDEATH,
     RAMADANHIT,
     OSAMAHIT,
-    HEAL
+    HEAL,
+    COIN
 }
 [RequireComponent(typeof(AudioSource))]
 public class soundManager : MonoBehaviour
@@ -37,8 +38,9 @@ public class soundManager : MonoBehaviour
     {
         
     }
-    public static void PlaySound(soundType sound , float volume=1)
+    public static void PlaySound(soundType sound, float volume = 1, float minPitch = 0.9f, float maxPitch = 1.1f)
     {
-        instance.audioSource.PlayOneShot(instance.soundList[(int)sound],volume);
+        instance.audioSource.pitch = Random.Range(minPitch, maxPitch);
+        instance.audioSource.PlayOneShot(instance.soundList[(int)sound], volume);
     }
 }

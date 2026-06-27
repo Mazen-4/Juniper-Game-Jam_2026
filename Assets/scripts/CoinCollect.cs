@@ -8,11 +8,12 @@ public class CoinCollect : MonoBehaviour
     {
         if (collected) return;
 
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             collected = true;
             CoinManager.instance.AddCoin();
-            Destroy(gameObject);
+            soundManager.PlaySound(soundType.COIN);
+            Destroy(transform.parent.gameObject);
         }
     }
 }
