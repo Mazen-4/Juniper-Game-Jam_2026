@@ -160,7 +160,9 @@ public class osamaScript : MonoBehaviour
 
     public void takeDamage(int damage)
     {
-        health-= damage;
+        soundManager.PlaySound(soundType.OSAMAHIT);
+
+        health -= damage;
 
 
         if (health <= 0)

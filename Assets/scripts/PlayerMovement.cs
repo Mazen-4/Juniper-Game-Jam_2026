@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     [Header("movement")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
@@ -26,7 +26,9 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("shotting related")]
     [SerializeField] bool shot = false;
-    [SerializeField] private GameObject bulletObj;
+    [SerializeField] private GameObject bulletObj1;
+    [SerializeField] private GameObject bulletObj2;
+
     [SerializeField] private float spawnDistance;
     [SerializeField] private float spawnDistanceUP;
 
@@ -44,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     // ── UI BARS: add nextDashTime ───────────────────────────
     private float nextDashTime = 0f;
     // ───────────────────────────────────────────────────────
+
 
     int val = 0;
     public WheelScript wheel;
@@ -71,7 +74,6 @@ public class PlayerMovement : MonoBehaviour
         return 1f - ((nextDashTime - Time.time) / dashCooldown);
     }
     // ───────────────────────────────────────────────────────
-
     private void SwitchWeapon(int weaponIndex)
     {
         int totalWeaponLayers = 4;
@@ -86,6 +88,8 @@ public class PlayerMovement : MonoBehaviour
         {
             alginFlag = -1;
         }
+
+        wheel.SetActiveWeapon(weaponIndex);
     }
 
     public void switchLayer(int weaponIndex) { SwitchWeapon(weaponIndex); }
@@ -93,6 +97,22 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+       
+            /*
+            if (wheel.activeWeapon == 2 && Input.GetKeyDown(KeyCode.Mouse0)) soundManager.PlaySound(soundType.SWORD , 0.75f);
+
+            if (wheel.activeWeapon == 1 && Input.GetKeyDown(KeyCode.Mouse0)) soundManager.PlaySound(soundType.GUN, 0.75f);
+
+
+            if (wheel.activeWeapon == 3 && Input.GetKeyDown(KeyCode.Mouse0)) soundManager.PlaySound(soundType.MAGIC, 0.75f);
+
+
+            if (wheel.activeWeapon == 4 && Input.GetKeyDown(KeyCode.Mouse0)) soundManager.PlaySound(soundType.AXE, 0.75f);
+             */
+
+            if (wheel.activeWeapon == 0 && Input.GetKeyDown(KeyCode.Mouse0)) soundManager.PlaySound(soundType.PANHIT, 0.5f);
+
+
         if (wheel.activeWeapon == 3) alginFlag = 3;
         if (wheel.activeWeapon == 1) alginFlag = 1;
         if (wheel.activeWeapon == 2) alginFlag = 2;
@@ -105,10 +125,51 @@ public class PlayerMovement : MonoBehaviour
         HandledDoubleJump();
     }
 
+
+    public void playSword()
+    {
+        soundManager.PlaySound(soundType.SWORD, 0.5f);
+    }
+
+    public void playGunForward()
+    {
+        soundManager.PlaySound(soundType.GUN, 0.5f);
+        
+    }
+
+    public void playGunUp()
+    {
+        soundManager.PlaySound(soundType.MAGIC, 0.5f);
+    }
+
+    public void playAxe()
+    {
+        soundManager.PlaySound(soundType.AXE, 0.5f);
+    }
+
+    public void playPan()
+    {
+        soundManager.PlaySound(soundType.PANHIT, 0.5f);
+    }
+
+
+    public void playFootStep()
+    {
+        soundManager.PlaySound(soundType.FOOTSTEP, 0.5f);
+    }
+    public void playDash()
+    {
+        soundManager.PlaySound(soundType.PLAYERDASH, 0.5f);
+    }
+    public void playHit()
+    {
+        soundManager.PlaySound(soundType.PLAYERHIT, 0.5f);
+    }
     void HandledDoubleJump()
     {
         if (!isGrounded)
         {
+
             if (canDouble && Input.GetKeyDown(KeyCode.Space))
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -126,8 +187,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            val = val == 0 ? wheel.lastSpunWeapon : 0;
             switchLayer(val);
-            val = val == 0 ? wheel.activeWeapon : 0;
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isDashing)
@@ -137,6 +198,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
+
+            soundManager.PlaySound(soundType.PLAYERJUMP, 0.75f);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
@@ -145,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetTrigger("shot2");
             if (alginFlag == 1)
             {
-                bulletObj.GetComponent<bulletScript>().bulletDir = dir ? 1 : -1;
+                bulletObj1.GetComponent<bulletScript>().bulletDir = dir ? 1 : -1;
                 pendingShot = true;
             }
             if (alginFlag == 3)
@@ -244,16 +307,43 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("dead2", true);
     }
 
-    public void disableScript() { this.enabled = false; }
+    public void disableScript()
+    {
+        StartCoroutine(SlowMotionDeath());
+    }
+
+    private IEnumerator SlowMotionDeath()
+    {
+        soundManager.PlaySound(soundType.PLAYERDEATH);
+        float duration = 0.8f;
+        float targetScale = 0.05f;
+        float startScale = Time.timeScale;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            Time.timeScale = Mathf.Lerp(startScale, targetScale, elapsed / duration);
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+            yield return null;
+        }
+
+        yield return new WaitForSecondsRealtime(0.3f);
+
+        this.enabled = false;
+        Time.timeScale = 0f;
+        Time.fixedDeltaTime = 0f;
+    }
     public void destroyMe() { Destroy(gameObject); }
 
     public void fireUpBullut()
     {
+
         if (pendingShot && Time.time >= nextFireTime)
         {
             if (alginFlag == 1)
             {
-                GameObject b = Instantiate(bulletObj, spawnPos, Quaternion.identity);
+                GameObject b = Instantiate(bulletObj2, spawnPos, Quaternion.identity);
                 bulletScript bs = b.GetComponent<bulletScript>();
                 bs.bulletDir = dir ? 1 : -1;
                 bs.bulletDirY = 0;
@@ -261,7 +351,7 @@ public class PlayerMovement : MonoBehaviour
             if (alginFlag == 3)
             {
                 Vector3 upSpawnPos = transform.position + Vector3.up * spawnDistanceUP;
-                GameObject b = Instantiate(bulletObj, upSpawnPos, Quaternion.identity);
+                GameObject b = Instantiate(bulletObj1, upSpawnPos, Quaternion.identity);
                 bulletScript bs = b.GetComponent<bulletScript>();
                 bs.bulletDir = 0;
                 bs.bulletDirY = 1;

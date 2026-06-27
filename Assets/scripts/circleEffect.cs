@@ -27,7 +27,9 @@ public class circleEffect : MonoBehaviour
             if (anim)
             {
                 anim.SetTrigger("hit");
-    
+                soundManager.PlaySound(soundType.PLAYERHIT, 0.75f);
+
+
             }
             if (player)
             {
