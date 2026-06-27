@@ -18,6 +18,7 @@ public class WheelScript : MonoBehaviour
     float angularSpeed = 0f;
     [SerializeField] private Animator playerAnimator;
     public int activeWeapon;
+    public int lastSpunWeapon = 0;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -70,7 +71,9 @@ public class WheelScript : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0, 0, 90);
             player.switchLayer(1); // gun1
+           
             activeWeapon = 1;
+            lastSpunWeapon = 1;
             Debug.Log("weapon1");
         }
         else if (rot > 135 && rot <= 225)
@@ -78,6 +81,8 @@ public class WheelScript : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, 180);
             player.switchLayer(2); // gun2
             activeWeapon = 2;
+            lastSpunWeapon = 2;
+
             Debug.Log("weapon2");
 
 
@@ -87,17 +92,24 @@ public class WheelScript : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, 270);
             player.switchLayer(3); // gun3
             activeWeapon = 3;
+            lastSpunWeapon = 3;
+
             Debug.Log("weapon3");
 
         }
         else
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
-            player.switchLayer(4); 
+            player.switchLayer(4);
             activeWeapon = 4;
+            lastSpunWeapon = 4;
+
             Debug.Log("weapon4");
 
         }
     }
-
+    public void SetActiveWeapon(int index)
+    {
+        activeWeapon = index;
+    }
 }

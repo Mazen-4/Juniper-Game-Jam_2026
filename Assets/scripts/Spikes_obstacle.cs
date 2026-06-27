@@ -3,29 +3,42 @@ using UnityEngine;
 
 public class Spikes_obstacle : MonoBehaviour
 {
-    [SerializeField] private float damageInterval = 1f;
-    [SerializeField] private PlayerMovement player;  // drag player here in Inspector
-    private bool isDamaging = false;
+    public float damageCooldown = 1f;
+    private float cooldownTimer = 0f;
+
+    private void Update()
+    {
+        if (cooldownTimer > 0f)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject == player.gameObject && !isDamaging)
-            StartCoroutine(DamageLoop());
+        HitPlayer(other);
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject == player.gameObject)
-            isDamaging = false;
+        HitPlayer(other);
     }
 
-    private IEnumerator DamageLoop()
+    private void HitPlayer(Collider2D other)
     {
-        isDamaging = true;
-        while (isDamaging)
+        if (cooldownTimer > 0f) return;
+
+        if (other.gameObject.CompareTag("Player"))
         {
-            player.TakeDamage();
-            yield return new WaitForSeconds(damageInterval);
+            PlayerMovement player = other.gameObject.GetComponent<PlayerMovement>();
+            if (player)
+            {
+                Animator anim = other.gameObject.GetComponentInChildren<Animator>();
+                anim.SetTrigger("hit");
+                player.TakeDamage();
+                player.rb.AddForce(Vector2.up * 20, ForceMode2D.Impulse);
+                cooldownTimer = damageCooldown;
+            }
         }
     }
 }
