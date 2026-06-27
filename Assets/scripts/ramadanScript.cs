@@ -37,8 +37,9 @@ public class ramadanScript : MonoBehaviour
     [SerializeField] private float health = 3;
 
     [SerializeField] private bool canAttack = true;
-    
-    
+    private bool isDead = false;
+    [Header("loot")]
+    public List<lootItem> lootTable = new List<lootItem>();
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
@@ -148,14 +149,34 @@ public class ramadanScript : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isDead) return;  
+
         soundManager.PlaySound(soundType.RAMADANHIT);
         health -= damage;
         if (health <= 0)
         {
+            isDead = true;
+            foreach(lootItem item in lootTable)
+            {
+                if(Random.Range(0f,100f) < item.dropChance)
+                {
+                    InstantiateLoot(item.itemPrefab);
+                    break;
+                }
+            }
             anim.SetTrigger("dead");
         }
     }
+    void InstantiateLoot(GameObject loot)
+    {
+        if(loot)
+        {
+            GameObject droppedLoot = Instantiate(loot, transform.position, quaternion.identity);
 
+
+            droppedLoot.GetComponent<SpriteRenderer>().color = Color.red;
+        }
+    }
     public void destroyMe()
     {
         Destroy(gameObject);

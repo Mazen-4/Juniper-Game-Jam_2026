@@ -15,7 +15,7 @@ public enum soundType
     PLAYERDEATH,
     RAMADANHIT,
     OSAMAHIT,
-
+    HEAL
 }
 [RequireComponent(typeof(AudioSource))]
 public class soundManager : MonoBehaviour

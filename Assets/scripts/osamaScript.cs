@@ -11,7 +11,7 @@ public class osamaScript : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
-
+    private bool isDead = false;
 
 
     [Header("mercyFactor")]
@@ -37,6 +37,8 @@ public class osamaScript : MonoBehaviour
 
     [SerializeField] private float health;
 
+    [Header("loot")]
+    public List<lootItem> lootTable = new List<lootItem>();
 
     void Start()
     {
@@ -47,7 +49,16 @@ public class osamaScript : MonoBehaviour
         leftPoint = transform.position.x - minPatrol;
         rightPoint = transform.position.x + maxPatrol;
     }
+    void InstantiateLoot(GameObject loot)
+    {
+        if (loot)
+        {
+            GameObject droppedLoot = Instantiate(loot, transform.position, quaternion.identity);
 
+
+            droppedLoot.GetComponent<SpriteRenderer>().color = Color.red;
+        }
+    }
     void Update()
     {
         if (anim.GetBool("charge"))
@@ -160,13 +171,20 @@ public class osamaScript : MonoBehaviour
 
     public void takeDamage(int damage)
     {
+        if (isDead) return;
         soundManager.PlaySound(soundType.OSAMAHIT);
-
         health -= damage;
-
-
         if (health <= 0)
         {
+            isDead = true;
+            foreach (lootItem item in lootTable)
+            {
+                if (Random.Range(0f, 100f) < item.dropChance)
+                {
+                    InstantiateLoot(item.itemPrefab);
+                    break;
+                }
+            }
             anim.SetTrigger("dead");
         }
     }

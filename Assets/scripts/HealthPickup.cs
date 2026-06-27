@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class HealthPickup : MonoBehaviour
 {
     [SerializeField] private float healAmount = 2f;
@@ -8,8 +7,21 @@ public class HealthPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerMovement>().Heal(healAmount);
-            Destroy(gameObject);
+            PlayerMovement pm = other.GetComponentInParent<PlayerMovement>();
+            if (pm == null)
+                pm = other.GetComponent<PlayerMovement>();
+
+            if (pm != null)
+            {
+                soundManager.PlaySound(soundType.HEAL);
+                pm.Heal(healAmount);
+                Debug.Log("potion healed player");
+                Destroy(transform.parent.gameObject); 
+            }
+            else
+            {
+                Debug.Log("no PlayerMovement found");
+            }
         }
     }
 }

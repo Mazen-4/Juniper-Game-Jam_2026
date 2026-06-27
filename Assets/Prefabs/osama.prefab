@@ -334,3 +334,6 @@ MonoBehaviour:
   movingRight: 1
   patrolSpeed: 1
   health: 10
+  lootTable:
+  - itemPrefab: {fileID: 8107161599600560192, guid: b0b596f3aa9e33740a40d2b0fd59a6ed, type: 3}
+    dropChance: 60.2
