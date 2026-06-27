@@ -3356,6 +3356,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2205593443906828452, guid: cae555592b7ddba4fb871874e5bae7e7, type: 3}
+      propertyPath: soundList.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205593443906828452, guid: cae555592b7ddba4fb871874e5bae7e7, type: 3}
+      propertyPath: soundList.Array.data[12]
+      value: 
+      objectReference: {fileID: 8300000, guid: c4f6f0a91bc82f943a5f53632a2ac19f, type: 3}
     - target: {fileID: 2205593443906828455, guid: cae555592b7ddba4fb871874e5bae7e7, type: 3}
       propertyPath: m_Name
       value: GameObject
@@ -3595,6 +3603,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1367803192}
+    - target: {fileID: 8502353253544944939, guid: 0c7c4336156a71849b84a2d89fc0c3e3, type: 3}
+      propertyPath: lootTable.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8502353253544944943, guid: 0c7c4336156a71849b84a2d89fc0c3e3, type: 3}
       propertyPath: m_Name
       value: ramadan
