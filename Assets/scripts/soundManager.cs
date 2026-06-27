@@ -16,7 +16,8 @@ public enum soundType
     RAMADANHIT,
     OSAMAHIT,
     HEAL,
-    COIN
+    COIN,
+    SPIN
 }
 [RequireComponent(typeof(AudioSource))]
 public class soundManager : MonoBehaviour
@@ -28,6 +29,10 @@ public class soundManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+    public static AudioClip GetClip(soundType sound)
+    {
+        return instance.soundList[(int)sound];
     }
     private void Start()
     {

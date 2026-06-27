@@ -1191,6 +1191,7 @@ MonoBehaviour:
   minPatrol: 10
   maxPatrol: 20
   patrolSpeed: 2
+  blood: {fileID: 0}
   dangerZone: 10
   speed: 4
   lowerBound: -0.9
@@ -1405,6 +1406,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   rb: {fileID: 0}
   speed: 2
+  blood: {fileID: 0}
   minReactionTime: 0.5
   maxReactionTime: 1
   reactionTimer: 0
@@ -2135,7 +2137,7 @@ Transform:
   - {fileID: 1018875968}
   - {fileID: 163557653}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &213461816
 MonoBehaviour:
@@ -2336,6 +2338,7 @@ MonoBehaviour:
   minPatrol: 10
   maxPatrol: 20
   patrolSpeed: 2
+  blood: {fileID: 0}
   dangerZone: 10
   speed: 4
   lowerBound: -0.9
@@ -5281,6 +5284,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   rb: {fileID: 0}
   speed: 2
+  blood: {fileID: 0}
   minReactionTime: 0.5
   maxReactionTime: 1
   reactionTimer: 0
@@ -5634,7 +5638,7 @@ Transform:
   m_Children:
   - {fileID: 1782659158}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &683678311
 MonoBehaviour:
@@ -6192,6 +6196,7 @@ MonoBehaviour:
   minPatrol: 10
   maxPatrol: 20
   patrolSpeed: 2
+  blood: {fileID: 0}
   dangerZone: 10
   speed: 4
   lowerBound: -0.9
@@ -6773,7 +6778,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2205593443906828450, guid: cae555592b7ddba4fb871874e5bae7e7, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2205593443906828450, guid: cae555592b7ddba4fb871874e5bae7e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6817,7 +6822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2205593443906828452, guid: cae555592b7ddba4fb871874e5bae7e7, type: 3}
       propertyPath: soundList.Array.size
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2205593443906828452, guid: cae555592b7ddba4fb871874e5bae7e7, type: 3}
       propertyPath: soundList.Array.data[12]
@@ -6827,6 +6832,10 @@ PrefabInstance:
       propertyPath: soundList.Array.data[13]
       value: 
       objectReference: {fileID: 8300000, guid: 2d75e5238d3595047b606ad74c814569, type: 3}
+    - target: {fileID: 2205593443906828452, guid: cae555592b7ddba4fb871874e5bae7e7, type: 3}
+      propertyPath: soundList.Array.data[14]
+      value: 
+      objectReference: {fileID: 8300000, guid: ac561ac611d89bb4897581907d10968b, type: 3}
     - target: {fileID: 2205593443906828455, guid: cae555592b7ddba4fb871874e5bae7e7, type: 3}
       propertyPath: m_Name
       value: Sound Manager
@@ -7069,6 +7078,7 @@ MonoBehaviour:
   minPatrol: 10
   maxPatrol: 20
   patrolSpeed: 2
+  blood: {fileID: 0}
   dangerZone: 10
   speed: 4
   lowerBound: -0.9
@@ -7899,6 +7909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170c6061c9089ec428b5c3c4b2e87035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 2
 --- !u!61 &955105227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22042,6 +22053,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   rb: {fileID: 0}
   speed: 2
+  blood: {fileID: 0}
   minReactionTime: 0.5
   maxReactionTime: 1
   reactionTimer: 0
@@ -22814,6 +22826,7 @@ MonoBehaviour:
   minPatrol: 10
   maxPatrol: 20
   patrolSpeed: 2
+  blood: {fileID: 0}
   dangerZone: 10
   speed: 4
   lowerBound: -0.9
@@ -24835,6 +24848,7 @@ MonoBehaviour:
   minPatrol: 10
   maxPatrol: 20
   patrolSpeed: 2
+  blood: {fileID: 0}
   dangerZone: 10
   speed: 4
   lowerBound: -0.9
@@ -25261,6 +25275,7 @@ MonoBehaviour:
   minPatrol: 10
   maxPatrol: 20
   patrolSpeed: 2
+  blood: {fileID: 0}
   dangerZone: 10
   speed: 4
   lowerBound: -0.9
@@ -25421,6 +25436,7 @@ MonoBehaviour:
   minPatrol: 10
   maxPatrol: 20
   patrolSpeed: 2
+  blood: {fileID: 0}
   dangerZone: 10
   speed: 4
   lowerBound: -0.9
@@ -26813,6 +26829,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   rb: {fileID: 0}
   speed: 2
+  blood: {fileID: 0}
   minReactionTime: 0.5
   maxReactionTime: 1
   reactionTimer: 0
@@ -27200,6 +27217,7 @@ MonoBehaviour:
   minPatrol: 10
   maxPatrol: 20
   patrolSpeed: 2
+  blood: {fileID: 0}
   dangerZone: 10
   speed: 4
   lowerBound: -0.9
@@ -27502,6 +27520,7 @@ MonoBehaviour:
   minPatrol: 10
   maxPatrol: 20
   patrolSpeed: 2
+  blood: {fileID: 0}
   dangerZone: 10
   speed: 4
   lowerBound: -0.9
@@ -27773,7 +27792,7 @@ Transform:
   - {fileID: 76992749}
   - {fileID: 298949199}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1826247348
 GameObject:
@@ -27874,6 +27893,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   rb: {fileID: 0}
   speed: 2
+  blood: {fileID: 0}
   minReactionTime: 0.5
   maxReactionTime: 1
   reactionTimer: 0
@@ -28970,6 +28990,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   rb: {fileID: 0}
   speed: 2
+  blood: {fileID: 0}
   minReactionTime: 0.5
   maxReactionTime: 1
   reactionTimer: 0
@@ -29895,6 +29916,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   rb: {fileID: 0}
   speed: 2
+  blood: {fileID: 0}
   minReactionTime: 0.5
   maxReactionTime: 1
   reactionTimer: 0
@@ -30338,6 +30360,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   rb: {fileID: 0}
   speed: 2
+  blood: {fileID: 0}
   minReactionTime: 0.5
   maxReactionTime: 1
   reactionTimer: 0
@@ -30443,6 +30466,7 @@ MonoBehaviour:
   minPatrol: 10
   maxPatrol: 20
   patrolSpeed: 2
+  blood: {fileID: 0}
   dangerZone: 10
   speed: 4
   lowerBound: -0.9
@@ -30490,6 +30514,63 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!1001 &7087349357188715434
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5250061289857277161, guid: 6b2bdb07df1f34b4ca944e0070efd79a, type: 3}
+      propertyPath: m_Name
+      value: bloodSlash
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192552294515693026, guid: 6b2bdb07df1f34b4ca944e0070efd79a, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192552294515693026, guid: 6b2bdb07df1f34b4ca944e0070efd79a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.672385
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192552294515693026, guid: 6b2bdb07df1f34b4ca944e0070efd79a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3253133
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192552294515693026, guid: 6b2bdb07df1f34b4ca944e0070efd79a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -26.943562
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192552294515693026, guid: 6b2bdb07df1f34b4ca944e0070efd79a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192552294515693026, guid: 6b2bdb07df1f34b4ca944e0070efd79a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192552294515693026, guid: 6b2bdb07df1f34b4ca944e0070efd79a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192552294515693026, guid: 6b2bdb07df1f34b4ca944e0070efd79a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192552294515693026, guid: 6b2bdb07df1f34b4ca944e0070efd79a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192552294515693026, guid: 6b2bdb07df1f34b4ca944e0070efd79a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192552294515693026, guid: 6b2bdb07df1f34b4ca944e0070efd79a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6b2bdb07df1f34b4ca944e0070efd79a, type: 3}
 --- !u!1001 &8107161598025406143
 PrefabInstance:
   m_ObjectHideFlags: 0

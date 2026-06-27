@@ -19,11 +19,32 @@ public class WheelScript : MonoBehaviour
     [SerializeField] private Animator playerAnimator;
     public int activeWeapon;
     public int lastSpunWeapon = 0;
+
+    private float spinDuration = 3f;
+    private float soundClipLength = 3f;
+        private AudioSource spinAudioSource;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        spinAudioSource = gameObject.AddComponent<AudioSource>();
+        spinAudioSource.clip = soundManager.GetClip(soundType.SPIN);
+        spinAudioSource.loop = false;
+        spinAudioSource.playOnAwake = false;
     }
-
+    float EstimateSpinDuration(float startSpeed)
+    {
+        float speed = startSpeed;
+        float time = 0f;
+        while (speed > 0)
+        {
+            float stopPower = (stopPowerS + stopPowerE) / 2f;
+            speed -= stopPower * 0.016f;
+            speed = Mathf.Clamp(speed, 0, 1440);
+            time += 0.016f;
+            if (time > 30f) break;
+        }
+        return time + 0.5f;
+    }
     public void rotate()
     {
         if (!isSpinning)
@@ -31,6 +52,10 @@ public class WheelScript : MonoBehaviour
             float rotatePower = Random.Range(rotatePowerS, rotatePowerE);
             angularSpeed = rotatePower;
             isSpinning = true;
+
+            float spinDuration = EstimateSpinDuration(angularSpeed);
+            spinAudioSource.pitch = soundClipLength / spinDuration;
+            spinAudioSource.Play();
         }
     }
 
@@ -54,14 +79,16 @@ public class WheelScript : MonoBehaviour
 
             transform.Rotate(0, 0, angularSpeed * Time.deltaTime);
         }
-
         if (angularSpeed <= 0 && isSpinning)
         {
+            if (spinAudioSource.isPlaying)
+                spinAudioSource.Stop();
+
             accum += 1 * Time.deltaTime;
             if (accum >= 0.5f)
             {
                 GetReward();
-                isSpinning = false; 
+                isSpinning = false;
                 accum = 0;
             }
         }
