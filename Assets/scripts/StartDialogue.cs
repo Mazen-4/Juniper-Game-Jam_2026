@@ -1,21 +1,18 @@
 using UnityEngine;
 using Yarn.Unity;
-
 public class StartDialogue : MonoBehaviour
 {
     public DialogueRunner runner;
 
     void Start()
     {
-        runner.onDialogueStart.AddListener(OnDialogueStart);
         runner.onDialogueComplete.AddListener(OnDialogueEnd);
-        runner.StartDialogue("IntroDialogue");
-    }
 
-    private void OnDialogueStart()
-    {
+        // Disable player directly before starting — don't rely on onDialogueStart
         PlayerMovement player = FindObjectOfType<PlayerMovement>();
         if (player != null) player.enabled = false;
+
+        runner.StartDialogue("IntroDialogue");
     }
 
     private void OnDialogueEnd()
@@ -28,30 +25,29 @@ public class StartDialogue : MonoBehaviour
 public class OutroTrigger : MonoBehaviour
 {
     public DialogueRunner dialogueRunner;
+    private bool triggered = false;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        if (triggered) return;
+
         if (other.CompareTag("Player") && !dialogueRunner.IsDialogueRunning)
         {
-            dialogueRunner.onDialogueStart.AddListener(OnDialogueStart);
+            triggered = true;
+
+            // Disable player directly here too, same reason
+            PlayerMovement player = FindObjectOfType<PlayerMovement>();
+            if (player != null) player.enabled = false;
+
             dialogueRunner.onDialogueComplete.AddListener(OnDialogueEnd);
             dialogueRunner.StartDialogue("OutroDialogue");
         }
-    }
-
-    private void OnDialogueStart()
-    {
-        PlayerMovement player = FindObjectOfType<PlayerMovement>();
-        if (player != null) player.enabled = false;
     }
 
     private void OnDialogueEnd()
     {
         PlayerMovement player = FindObjectOfType<PlayerMovement>();
         if (player != null) player.enabled = true;
-
-        // Unsubscribe so it doesn't stack if player re-enters the trigger
-        dialogueRunner.onDialogueStart.RemoveListener(OnDialogueStart);
         dialogueRunner.onDialogueComplete.RemoveListener(OnDialogueEnd);
     }
 }
