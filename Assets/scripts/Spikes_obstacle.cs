@@ -3,30 +3,42 @@ using UnityEngine;
 
 public class Spikes_obstacle : MonoBehaviour
 {
-    [SerializeField] private float damageInterval = 1f;
-    [SerializeField] private float knockbackForceY = 7f;
-
-    private float _damageTimer;
+    public float damageCooldown = 1f;
+    private float cooldownTimer = 0f;
 
     private void Update()
     {
-        if (_damageTimer > 0f)
-            _damageTimer -= Time.deltaTime;
+        if (cooldownTimer > 0f)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) => HitPlayer(other);
-    private void OnTriggerStay2D(Collider2D other) => HitPlayer(other);
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        HitPlayer(other);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        HitPlayer(other);
+    }
 
     private void HitPlayer(Collider2D other)
     {
-        if (!other.CompareTag("Player") || _damageTimer > 0f) return;
+        if (cooldownTimer > 0f) return;
 
-        PlayerMovement player = other.GetComponent<PlayerMovement>();
-        if (player)
+        if (other.gameObject.CompareTag("Player"))
         {
-            _damageTimer = damageInterval;
-            player.TakeDamage(0.5f);
-            player.ApplyKnockback(knockbackForceY);
+            PlayerMovement player = other.gameObject.GetComponent<PlayerMovement>();
+            if (player)
+            {
+                Animator anim = other.gameObject.GetComponentInChildren<Animator>();
+                anim.SetTrigger("hit");
+                player.TakeDamage();
+                player.rb.AddForce(Vector2.up * 20, ForceMode2D.Impulse);
+                cooldownTimer = damageCooldown;
+            }
         }
     }
 }

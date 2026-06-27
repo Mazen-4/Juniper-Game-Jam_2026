@@ -148,6 +148,7 @@ public class ramadanScript : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        soundManager.PlaySound(soundType.RAMADANHIT);
         health -= damage;
         if (health <= 0)
         {
