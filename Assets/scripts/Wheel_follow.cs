@@ -7,7 +7,7 @@ public class Wheel_follow : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private Transform target;
     [SerializeField] private float smoothSpeed = 5f;
-    [SerializeField] private Vector3 offset = new Vector3(11f, 5.5f, 0f);
+    [SerializeField] private Vector3 offset = new Vector3(10f, 6.5f, 0f);
 
     private void LateUpdate()
     {

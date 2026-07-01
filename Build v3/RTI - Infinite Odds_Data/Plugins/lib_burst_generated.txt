@@ -1,0 +1,9 @@
+--platform=Windows
+--backend=burst-llvm
+--target=X64_SSE4
+--noalias
+--dump=Function
+--float-precision=Standard
+--output=D:\Unity Projects\Juniper-Game-Jam_2026\Temp\StagingArea\Data\Plugins\lib_burst_generated
+--assembly-folder=D:\Unity Projects\Juniper-Game-Jam_2026\Temp\StagingArea\Data\Managed\
+--method=UnityEngine.U2D.Animation.BurstedSpriteSkinUtilities, Unity.2D.Animation.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ValidateBoneWeights(Unity.Collections.NativeSlice`1[[UnityEngine.BoneWeight, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--5bf0a813706ef9287fcaa55dd0ccb876

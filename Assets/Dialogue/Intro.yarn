@@ -1,22 +1,25 @@
 ﻿title: IntroDialogue
 ---
-Narrator: Welcome back, Subject 077. It seems there are still some irregularities with your memory connectors. So let's start from the beginning, shall we?
-Narrator: Welcome to S.R.I. - Secret Random Industries. Where the future is never predictable.
-Narrator: Especially yours.
-Narrator: We've taken the liberty of preparing a weapons spinning wheel, assembled from your previous attempts. You may use it to fight back. But keep in mind - nothing here is free.
-Narrator: You are currently in the Testing Section. Today's evaluation consists of three chambers. A super fair. Super easy. Quiz.
-Narrator: Upon completing all tests, the R.T.I. facility will provide you with a very valuable present.
-Narrator: That's all, Subject 077. Please proceed to the next chamber when ready.
-Narrator: And good luck.
-Narrator: You'll need it.
+??? : Welcome back, Subject 077. It seems there are still some irregularities with your memory connectors. So let's start from the beginning, shall we?
+-> Read the evaluation protocol.
+    ??? : Welcome to S.R.I. - Secret Random Industries. Where the future is never predictable. Especially yours.
+    ??? : Your kinetic motor functions are active. Engage A, D, or Arrow keys to move, utilize Space to Jump or Double Jump, and press Esc to pause reality if you require a cognitive break.
+    ??? : We've taken the liberty of preparing a weapons spinning wheel, assembled from your previous attempts. Press E to Spin the Wheel once you've collected 3 coins from the chamber. 
+    ??? : Left-Click to Attack with your active weapon. Should you need to adapt, double-tap Tab to swap between your default Pan and your current randomized weapon.
+    ??? : Oh, and use Shift to Dash if things get... chaotic. 
+    ??? : You are currently in the Testing Section. Today's evaluation consists just 1 chamber. A super fair. Super easy. Quiz.
+    ??? : Upon completing all tests, ... You won't anyway.
+    ??? : That's all, Subject 077. Please proceed to the next chamber when ready.
+    ??? : And good luck. You'll need it.
+-> Skip Intro
 ===
 
 title: OutroDialogue
 ---
-Narrator: Congratulations, Subject 077. Your performance across the tests was truly impressive.
-Narrator: Oh - and yes. I know you didn't reach the last chamber.
-Narrator: But then again, you were never meant to.
-Narrator: No one ever is.
-Narrator: So... farewell, Subject 077.
-Narrator: Please do try to die peacefully this time.
+??? : Congratulations, Subject 077. Your performance across the tests was truly impressive.
+??? : Oh - and yes. I know you didn't reach the last chamber.
+??? : But then again, you were never meant to.
+??? : No one ever is.
+??? : So... farewell, Subject 077.
+??? : Please do try to die peacefully this time.
 ===

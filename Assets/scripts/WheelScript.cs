@@ -17,6 +17,7 @@ public class WheelScript : MonoBehaviour
     float accum = 0f;
     float angularSpeed = 0f;
     [SerializeField] private Animator playerAnimator;
+    [SerializeField] private int coinsToDrop = 3;
     public int activeWeapon;
     public int lastSpunWeapon = 0;
 
@@ -63,10 +64,10 @@ public class WheelScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (CoinManager.getCoinCt() > 5)
+            if (CoinManager.getCoinCt() > coinsToDrop)
             {
                 rotate();
-                CoinManager.setCoinCt(CoinManager.getCoinCt() - 5);  
+                CoinManager.setCoinCt(CoinManager.getCoinCt() - coinsToDrop);  
             }
 
         }

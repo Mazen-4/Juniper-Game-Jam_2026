@@ -7,7 +7,7 @@ public class UI_Bars_logic : MonoBehaviour
 {
     [SerializeField] private Transform target;
     [SerializeField] private float smoothSpeed = 5f;
-    [SerializeField] private Vector3 offset = new Vector3(-6f, 6.5f, 0f);
+    [SerializeField] private Vector3 offset = new Vector3(-5f, 7f, 0f);
 
     [Header("UI Bars")]
     [SerializeField] private Slider healthSlider;
